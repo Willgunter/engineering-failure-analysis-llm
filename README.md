@@ -24,6 +24,13 @@ This repo is organized so the **root README stays high-level** and the folder RE
 - Fine-tuning scripts / notebook: `finetune1/README.md`
 - Dataset curation notes + prompt template: `data/README.md`
 
+## Demo videos
+
+- Video 1 — Overview: _TBD_
+- Video 2 — Data + prompt template: _TBD_
+- Video 3 — Evals walkthrough: _TBD_
+- Video 4 — Fine-tuning + results: _TBD_
+
 ## Base models (examples)
 
 Starting points used in experiments (links go to Hugging Face model cards):
