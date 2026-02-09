@@ -1,0 +1,5 @@
+.engineeringreasoning-venv/
+engineeringreasoning-venv/
+__pycache__/
+EngDesign-Open/
+.DS_Store
