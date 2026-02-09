@@ -47,4 +47,3 @@ This repo intentionally does **not** include full-text articles or other potenti
 ## Project status
 
 Research code / experiment log: expect sharp edges (dependency churn, JSON compliance issues on schema-based tasks, etc.). Folder READMEs call out known issues and practical workarounds.
-# engineering-failure-analysis-llm
