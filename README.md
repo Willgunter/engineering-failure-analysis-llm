@@ -9,6 +9,9 @@ margins).
 
 This repo is organized so the **root README stays high-level** and the folder READMEs carry the “how-to-run” details.
 
+## Demo link
+https://huggingface.co/spaces/Willgunter/Engineering-Reasoning-LLM
+
 ## Demo videos showcasing fine-tuned model response
 [https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b](https://github.com/user-attachments/assets/2840ed97-784e-4996-8c92-ae336b4f5951)
 
