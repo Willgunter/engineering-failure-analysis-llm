@@ -7,11 +7,7 @@ structured failure analysis grounded in first principles (explicit/implicit
 assumptions, governing physics, interdependencies, failure modes, and safety
 margins).
 
-This repo is organized so the **root README stays high-level** and the folder READMEs car
-
-https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-bb2b4ae1a00c
-
-ry the “how-to-run” details.
+This repo is organized so the **root README stays high-level** and the folder READMEs carry the “how-to-run” details.
 
 ## Goals
 
@@ -30,9 +26,9 @@ ry the “how-to-run” details.
 
 ## Demo videos
 
-- `media/LEO_Satellite.mov` — Gradio demo (question/topic: LEO satellite)
-- `media/undersea_beam.mov` — Gradio demo (question/topic: undersea beam)
-- `media/Benchmark_q14.mov` — Gradio demo (question/topic: benchmark Q14)
+- [`media/LEO_Satellite.mov`](https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b) — Gradio demo (question/topic: LEO satellite)
+- [`media/undersea_beam.mov`](https://github.com/user-attachments/assets/3a69f177-23d0-4ec6-9d93-10a01def8ff4b2b4ae1a00c) — Gradio demo (question/topic: undersea beam)
+- [`media/Benchmark_q14.mov`](https://github.com/user-attachments/assets/84a09a55-ecac-4a80-833a-3fa27d2513e8) — Gradio demo (question/topic: benchmark Q14)
 
 ## Base models (examples)
 
