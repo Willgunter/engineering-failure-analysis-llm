@@ -24,6 +24,10 @@ This repo is organized so the **root README stays high-level** and the folder RE
 - Fine-tuning scripts / notebook: `finetune1/README.md`
 - Dataset curation notes + prompt template: `data/README.md`
 
+
+https://github.com/user-attachments/assets/2840ed97-784e-4996-8c92-ae336b4f5951
+
+
 ## Demo videos
 https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b
 - [`media/LEO_Satellite.mov`](https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b) — Gradio demo (question/topic: LEO satellite)
