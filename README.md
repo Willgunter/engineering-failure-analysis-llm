@@ -26,10 +26,9 @@ This repo is organized so the **root README stays high-level** and the folder RE
 
 ## Demo videos
 
-- Video 1 — Overview: _TBD_
-- Video 2 — Data + prompt template: _TBD_
-- Video 3 — Evals walkthrough: _TBD_
-- Video 4 — Fine-tuning + results: _TBD_
+- `media/LEO_Satellite.mov` — Gradio demo (question/topic: LEO satellite)
+- `media/undersea_beam.mov` — Gradio demo (question/topic: undersea beam)
+- `media/Benchmark_q14.mov` — Gradio demo (question/topic: benchmark Q14)
 
 ## Base models (examples)
 
