@@ -7,7 +7,11 @@ structured failure analysis grounded in first principles (explicit/implicit
 assumptions, governing physics, interdependencies, failure modes, and safety
 margins).
 
-This repo is organized so the **root README stays high-level** and the folder READMEs carry the “how-to-run” details.
+This repo is organized so the **root README stays high-level** and the folder READMEs car
+
+https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-bb2b4ae1a00c
+
+ry the “how-to-run” details.
 
 ## Goals
 
