@@ -31,6 +31,14 @@ This repo is organized so the **root README stays high-level** and the folder RE
 ## Demo videos
 [https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b](https://github.com/user-attachments/assets/2840ed97-784e-4996-8c92-ae336b4f5951)
 
+
+https://github.com/user-attachments/assets/d7ecf97b-e8fa-474e-bb8f-9ac182169dde
+
+
+https://github.com/user-attachments/assets/e117e9c7-11cc-4a95-9e22-95e8115ffba1
+
+
+
 ## Base models (examples)
 
 Starting points used in experiments (links go to Hugging Face model cards):
