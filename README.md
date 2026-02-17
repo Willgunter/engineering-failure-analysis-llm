@@ -49,15 +49,9 @@ Key insight: Clear structure and constraint emphasis mattered more than raw doma
 - Base model: Qwen 3 8B
 - Method: Supervised Fine-Tuning (SFT) with QLoRA
 
-LoRA rank experiments showed:
+LoRA rank experiments showed that low rank lead to minimal behavioral change, a higher rank lead to a clear shift towards structured constraint-focused reasoning, and they also showed training loss correlated with observed reasoning shift with an overarching goal of a change in reasoning style.
 
-- Low rank -> minimal behavioral change
-- Higher rank -> clear shift toward structured, constraint-focused reasoning
-- Training loss correlated with observed reasoning shift
-
-The goal was not just output formatting, but a change in reasoning style.
-
-### Behavioral Shift
+### Behavioral Shift (fine tuned output is in evals/custom-evals/results)
 
 Compared to the base model, the fine-tuned model:
 
@@ -113,7 +107,7 @@ This project should be viewed as a proof-of-concept exploration of reasoning sty
 
 Detailed experiment logs and reproducibility instructions are organized in subfolders:
 
-- Evaluation suite: `evals/`
+- Evaluation suite + results: `evals/`
 - Fine-tuning scripts: `finetune1/`
 - Dataset curation notes: `data/`
 
