@@ -1,62 +1,155 @@
-# Engineering Failure Analysis LLM
+Engineering Failure-Grounded Reasoning LLM
 
-Lightweight playground for adapting and evaluating small-to-mid sized open LLMs (≈2B–7B) toward engineering failure analysis / extreme-conditions reasoning.
+Structured supervision to shift LLM reasoning toward concise, constraint-focused engineering analysis.
 
-The core behavior target is: given raw technical documentation, produce a
-structured failure analysis grounded in first principles (explicit/implicit
-assumptions, governing physics, interdependencies, failure modes, and safety
-margins).
+Live Demo
 
-This repo is organized so the **root README stays high-level** and the folder READMEs carry the “how-to-run” details.
-
-## Demo link
+HuggingFace Space:
 https://huggingface.co/spaces/Willgunter/Engineering-Reasoning-LLM
 
-## Demo videos showcasing fine-tuned model response
-[https://github.com/user-attachments/assets/ad2a70fe-2efd-4867-9fc5-b](https://github.com/user-attachments/assets/2840ed97-784e-4996-8c92-ae336b4f5951)
+Demo Videos
 
+https://github.com/user-attachments/assets/2840ed97-784e-4996-8c92-ae336b4f5951
 
 https://github.com/user-attachments/assets/d7ecf97b-e8fa-474e-bb8f-9ac182169dde
 
-
 https://github.com/user-attachments/assets/e117e9c7-11cc-4a95-9e22-95e8115ffba1
 
+Problem
 
-## Goals
+Modern LLMs are often overly verbose, overly agreeable, and prone to drifting off topic when answering engineering questions. In high-stakes engineering contexts, unnecessary expansion and speculative commentary can obscure the true root constraint of a system.
 
-- Start from strong open base models and adapt them for engineering-focused reasoning.
-- Track progress with a repeatable evaluation suite (engineering knowledge + reasoning).
-- Keep experiments easy to reproduce (scripts > notebooks where possible).
+Engineers need:
 
-## Where to start
+Clear isolation of governing constraints
 
-- Evals overview: `evals/README.md`
-  - Custom manual prompt set: `evals/custom-evals/README.md`
-  - Standard benchmarks (EleutherAI lm-eval-harness wrapper): `evals/eleuther-ai-evals/README.md`
-  - EngiDesign OPEN (vLLM harness + task-native evaluators): `evals/eng-design/README.md`
-- Fine-tuning scripts / notebook: `finetune1/README.md`
-- Dataset curation notes + prompt template: `data/README.md`
+First-principles reasoning
 
-## Base models (examples)
+Concise, high-signal responses
 
-Starting points used in experiments (links go to Hugging Face model cards):
+Structured failure analysis
 
-- [Qwen/Qwen2.5-3B](https://huggingface.co/Qwen/Qwen2.5-3B)
-- [Qwen/Qwen3-4B-Base](https://huggingface.co/Qwen/Qwen3-4B-Base)
-- [HuggingFaceTB/SmolLM3-3B-Base](https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Base)
-- [ServiceNow-AI/Apriel-5B-Base](https://huggingface.co/ServiceNow-AI/Apriel-5B-Base)
-- [ibm-granite/granite-4.0-micro-base](https://huggingface.co/ibm-granite/granite-4.0-micro-base)
-- [mistralai/Ministral-3-3B-Base-2512](https://huggingface.co/mistralai/Ministral-3-3B-Base-2512)
-- [meta-llama/Llama-3.2-3B](https://huggingface.co/meta-llama/Llama-3.2-3B)
-- [google/gemma-2-2b](https://huggingface.co/google/gemma-2-2b)
-- [deepseek-ai/deepseek-llm-7b-base](https://huggingface.co/deepseek-ai/deepseek-llm-7b-base)
+This project explores whether training on structured, real-world engineering failure analyses can shift an LLM’s reasoning style toward constraint-focused outputs.
 
-Notes on when/why instruct-tuned siblings were used (e.g., for strict JSON outputs) live under `evals/eng-design/README.md`.
+Approach
+Dataset Design
 
-## Data / licensing note
+200 real engineering analyses manually selected
 
-This repo intentionally does **not** include full-text articles or other potentially copyrighted corpora. Any derived datasets, model outputs, or summaries should be generated only from sources you have the rights to use; see `data/README.md`.
+Domains included:
 
-## Project status
+Extreme thermal systems
 
-Research code / experiment log: expect sharp edges (dependency churn, JSON compliance issues on schema-based tasks, etc.). Folder READMEs call out known issues and practical workarounds.
+Civil infrastructure (bridges, tunnels, oil wells)
+
+Catastrophic failures (e.g., Challenger, SpaceX incidents)
+
+High-pressure and extreme-environment systems
+
+Initial attempt:
+Direct long-context infusion of full engineering texts into fine-tuning produced incoherent, unstable outputs.
+
+Pivot:
+Each analysis was decomposed into ~800 structured Q&A pairs.
+
+Format:
+Each answer enforced 4–5 concise bullet points isolating core failure mechanisms, assumptions, and constraint breakdowns.
+
+Key insight:
+Clear structure and constraint emphasis mattered more than raw domain exposure.
+
+Training
+
+Base model: Qwen 3 8B
+
+Method: Supervised Fine-Tuning (SFT) with QLoRA
+
+LoRA rank experiments showed:
+
+Low rank → minimal behavioral change
+
+Higher rank → clear shift toward structured, constraint-focused reasoning
+
+Training loss correlated with observed reasoning shift
+
+The goal was not just output formatting, but a change in reasoning style.
+
+Behavioral Shift
+
+Compared to the base model, the fine-tuned model:
+
+Reduced token count significantly
+
+Stopped rephrasing or expanding prompts unnecessarily
+
+Avoided speculative tangents
+
+More consistently identified governing physical constraints
+
+Reduced reinforcement of flawed assumptions
+
+On 15 custom engineering failure benchmarks:
+
+~50 percent showed meaningful improvement in root cause identification
+
+Signal density increased
+
+Responses were more structured and constraint-driven
+
+Verbosity was measured using token count comparison, and qualitative evaluation focused on correct constraint prioritization and failure mode identification.
+
+Evaluation
+
+Custom benchmarks tested reasoning across domains including:
+
+Brittleness under extreme cold
+
+Crack propagation under pressure
+
+Thermal runaway
+
+Structural failure cascades
+
+Constraint prioritization in coupled systems
+
+Evaluation criteria included:
+
+Correct root cause identification
+
+Reduction of irrelevant detail
+
+Structural adherence
+
+Conciseness (token count comparison)
+
+Evaluation was manual and domain-specific, using targeted expectations per prompt.
+
+Deployment
+
+A 0.6B 4-bit GGUF quantized variant is deployed on HuggingFace Spaces for demonstration.
+
+Deployment is optimized for accessibility and reproducibility, not production-scale performance.
+
+Limitations
+
+Dataset size is relatively small (~800 Q&A pairs)
+
+Evaluation is manual and limited in scope
+
+No cross-domain generalization testing yet
+
+Improvements may reflect structured style imitation rather than deeper reasoning gains
+
+This project should be viewed as a proof-of-concept exploration of reasoning style steering via structured domain supervision.
+
+Repository Structure
+
+Detailed experiment logs and reproducibility instructions are organized in subfolders:
+
+Evaluation suite: evals/
+
+Fine-tuning scripts: finetune1/
+
+Dataset curation notes: data/
+
+This root README focuses on the high-level reasoning intervention and findings.
